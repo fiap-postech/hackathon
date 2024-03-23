@@ -1,0 +1,200 @@
+{
+	"info": {
+		"_postman_id": "7b9192f2-0f11-4151-8989-a7f0f0d7e195",
+		"name": "FIAP - Hackathon",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "2887719",
+		"_collection_link": "https://wsmobilepucrs.postman.co/workspace/Team-Workspace~13573b22-06d8-4251-8112-058749a38c7e/collection/2887719-7b9192f2-0f11-4151-8989-a7f0f0d7e195?action=share&source=collection_link&creator=2887719"
+	},
+	"item": [
+		{
+			"name": "Time Tracking",
+			"item": [
+				{
+					"name": "Register Time Tracking",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-employee-id",
+								"value": "102031",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{timeTrackingUrl}}/time-tracking",
+							"host": [
+								"{{timeTrackingUrl}}"
+							],
+							"path": [
+								"time-tracking"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Visualize Time Tracking by Day",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-employee-id",
+								"value": "102031",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{timeTrackingUrl}}/time-tracking?date=2024-03-23",
+							"host": [
+								"{{timeTrackingUrl}}"
+							],
+							"path": [
+								"time-tracking"
+							],
+							"query": [
+								{
+									"key": "date",
+									"value": "2024-03-23"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Authenticate",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var response = JSON.parse(responseBody);",
+									"",
+									"pm.environment.set(\"token\", response.AuthenticationResult.IdToken);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-amz-json-1.1"
+							},
+							{
+								"key": "X-Amz-Target",
+								"value": "AWSCognitoIdentityProviderService.InitiateAuth"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"AuthParameters\": {\n        \"USERNAME\": \"0000001\",\n        \"PASSWORD\": \"3t_W0qRyy\",\n        \"SECRET_HASH\": \"dVmRDyE7qrA8XV34wFdZ6NPL3RauVrbhHoV1bqrC92w=\"\n    },\n    \"AuthFlow\": \"USER_PASSWORD_AUTH\",\n    \"ClientId\": \"7hpohtsm1oldaa04v7gd6j678a\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://cognito-idp.us-east-1.amazonaws.com/us-east-1_kQMxKGRA4",
+							"protocol": "https",
+							"host": [
+								"cognito-idp",
+								"us-east-1",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"us-east-1_kQMxKGRA4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "TimeSheet Report",
+			"item": [
+				{
+					"name": "Report TimeSheet",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJraWQiOiJhY2pNcXhUOHd0VHBEK2x1VlNBOG16bzVIa1BjTjkyN1AzRitxV2dDQWNNPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiJhMDdjZDkyZi1iNmUwLTQ5MjYtYmE0Ny0xMDU3ZjE3MDVjODAiLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV9rUU14S0dSQTQiLCJjb2duaXRvOnVzZXJuYW1lIjoiMDAwMDAwMSIsIm9yaWdpbl9qdGkiOiI5ZjA3YTc0MS1kNzA5LTRlN2UtYjdhMi1hYmU2YzY0MzFhZTkiLCJhdWQiOiI3aHBvaHRzbTFvbGRhYTA0djdnZDZqNjc4YSIsImV2ZW50X2lkIjoiOTRmNTYyNWUtOWE3ZC00YjY2LWE2ZjMtOTdjNjMwZDdiODRiIiwidG9rZW5fdXNlIjoiaWQiLCJhdXRoX3RpbWUiOjE3MTExODY5OTIsImV4cCI6MTcxMTE5MDU5MiwiaWF0IjoxNzExMTg2OTkyLCJqdGkiOiI4MWI3OTA4NS04ZDhhLTQyZWYtOGRiYS00NGM4OTg0N2U1ZWMiLCJlbWFpbCI6InNjaHJhbS5naW92YW5pQGdtYWlsLmNvbSJ9.Xx438eSGI66m5OFfKXA8KExTl8u3ywMKMfdeLLAPwcK3cwdB_4VgEtdqkxyvpFdqd8iBzwplu5L45siZ2UsSoF7g7HGnCgKxVXN7yGBLADIXxj7KYxMENEEFmY32DymkDkKqHsfFXo2_AV1Oyxa2mwE4wEHhQq4s5M1H2LlTofj7F1H-Wv9mtzjEUFLs-fLTdy5C_je_5WDkrwklrzSM264tQUmfoUp-TpncBqfUCIBM8rak8Gc8z_iI113uWiw-i5QwhM00p3-xoC7yVeXhTXaj9D0j-eRBBvq5hspoh3-ZQW9Fly-DIx2cxt7mNnmMdVBtA5rs_K6DPzXeo7rSww"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"yearMonth\": \"2024-03\"\n}"
+						},
+						"url": {
+							"raw": "{{timeTrackingUrl}}/timesheet/report",
+							"host": [
+								"{{timeTrackingUrl}}"
+							],
+							"path": [
+								"timesheet",
+								"report"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

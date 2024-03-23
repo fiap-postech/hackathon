@@ -10,6 +10,8 @@
     - [Authentication/Authotization Service](#authentication-and-authotization-service)
     - [Time Tracking Microservice](#time-tracking-microservice)
     - [Time Sheet Microservice](#time-sheet-microservice)
+    - [Visão Geral Fase 2](#visão-geral-fase-2)
+    - [Postman Collection](#postman-collection)
 
 
 ## Problema
@@ -61,4 +63,14 @@ _________________
 
 [Time Sheet Notification - Repositório da Lambda](https://github.com/fiap-postech/hackathon-timesheet-notification-service)
 
+
 _________________
+### Visão Geral Fase 2
+
+<img src="./doc/c4/c1_hackathon_fase2.png">
+
+_________________
+
+## Postman Collection
+
+Utilize a collection do Postman que se encontra em: [Hackathon API.postman_collection](./doc/postman/Hackathon.postman_collection.json) juntamente com o arquivo de environment: [hackathon.postman_environment](./doc/postman/hackathon.postman_environment.json) para realizar as requisições nos serviços.
