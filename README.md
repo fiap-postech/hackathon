@@ -28,10 +28,12 @@ Sistema de gerenciamento de registro de ponto, este sistema tem como objetivo pe
 
 
 ## Arquitetura
-
+_________________
 ### Visão Geral
 
 <img src="./doc/c4/c1_hackathon.png">
+
+_________________
 
 ### Authentication and Authotization Service
 
@@ -39,16 +41,24 @@ Sistema de gerenciamento de registro de ponto, este sistema tem como objetivo pe
 
 [Authorizer - Repositório da Lambda](https://github.com/fiap-postech/hackathon-cognito-authorizer)
 
+_________________
+
 ### Time Tracking Microservice
 
 <img src="./doc/c4/time-tracking-c2_hackathon.png">
 
 [Time Tracking - Repositório do Serviço](https://github.com/fiap-postech/hackathon-time-tracking-microservice)
 
+_________________
+
 ### Time Sheet Microservice
 
 <img src="./doc/c4/time-sheet-c2_hackathon.png">
 
 [Time Sheet - Repositório do Serviço](https://github.com/fiap-postech/hackathon-timesheet-microservice)
+
 [Time Sheet Receiver - Repositório da Lambda](https://github.com/fiap-postech/hackathon-timesheet-receiver)
+
 [Time Sheet Notification - Repositório da Lambda](https://github.com/fiap-postech/hackathon-timesheet-notification-service)
+
+_________________
